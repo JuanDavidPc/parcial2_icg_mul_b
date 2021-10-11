@@ -1,0 +1,43 @@
+<input type=text size=2 id='nf'/>
+<button onclick='main()'>Ejecutar</button>
+<canvas id='canvas' width=800 height=600>
+<script>
+	var ctx;
+
+	function color(r, g, b) {
+        return 'rgba(' + r*2.55 + ',' + g*2.55 + ',' + b*2.55 + ')'
+	}
+
+	 function rectangulo(cd,colorBorde, colorRelleno, grosor){
+     ctx.beginPath()
+     ctx.strokeStyle = colorBorde;
+     ctx.fillStyle= colorRelleno;
+     ctx.linewidth = grosor;
+     ctx.moveTo(cd[0],cd[1]);
+     ctx.lineTo(cd[2],cd[3]);
+     ctx.lineTo(cd[4],cd[5]);
+     ctx.lineTo(cd[6],cd[7]);
+     ctx.closePath();
+     ctx.stroke();
+     ctx.fill();
+  }
+
+	
+
+    function main() {
+		var canvas = document.getElementById('canvas')
+		ctx = canvas.getContext('2d');
+
+	    var nc = parseInt(document.getElementById('nf').value)
+	    alert(nc + 1)
+
+		 
+		var[azul, verde, rojo] = [color(0,0,192),color(0,228,0),color(219,0,0)]; 
+
+		rectangulo([ 10,365,10,8, 120,8,120,365], rojo, rojo) //figura azul
+
+		rectangulo([125,365,127,8,236,8,236,365 ], verde,verde)//figura verde
+
+		rectangulo([ 243,365,241,8,341,8,353,365], azul,azul)//figura roja
+	}	
+</script>
